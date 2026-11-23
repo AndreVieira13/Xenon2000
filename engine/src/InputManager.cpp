@@ -119,7 +119,7 @@ void InputManager::update() {
         if (SDL_GetGamepadButton(gp, SDL_GAMEPAD_BUTTON_DPAD_DOWN))  axisY = -1.0f;
     }
 
-    moveAxis_ = Vec2{axisX, axisY};
+    moveAxis_ = Vector2D{axisX, axisY};
 }
 
 // Returns true if the given action is pressed on the current frame.
@@ -134,7 +134,7 @@ bool InputManager::isActionJustPressed(Action action) const noexcept {
 }
 
 // Returns the combined 2D movement vector sampled during the most recent update().
-Vec2 InputManager::getMoveAxis() const noexcept {
+Vector2D InputManager::getMoveAxis() const noexcept {
     return moveAxis_;
 }
 

@@ -13,7 +13,7 @@ namespace xenon {
 class Loner final : public Enemy {
 public:
     // Creates a Loner flying horizontally at horizontalSpeed with 2 HP and LonerA.bmp animation.
-    Loner(engine::Vec2 position,
+    Loner(engine::Vector2D position,
           float horizontalSpeed,
           std::shared_ptr<engine::Texture> texture,
           std::shared_ptr<engine::Texture> projectileTexture,

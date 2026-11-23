@@ -11,7 +11,7 @@ set(ENGINE_PUBLIC_HEADERS
     "${CMAKE_CURRENT_SOURCE_DIR}/include/engine/Shader.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/include/engine/SpriteAnimation.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/include/engine/Texture.h"
-    "${CMAKE_CURRENT_SOURCE_DIR}/include/engine/Vec2.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/engine/Vector2D.h"
 )
 
 set(ENGINE_PRIVATE_HEADERS

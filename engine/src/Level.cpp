@@ -11,7 +11,7 @@
 namespace engine {
 
 // Validates positive dimensions and initializes this level's dedicated PhysicsWorld.
-Level::Level(float width, float height, Vec2 gravity)
+Level::Level(float width, float height, Vector2D gravity)
     : width_{width}
     , height_{height}
     , physics_{std::make_unique<PhysicsWorld>(gravity)} {

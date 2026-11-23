@@ -12,8 +12,8 @@ namespace xenon {
 class EnemyProjectile final : public Projectile {
 public:
     // Configures a rotating enemy energy projectile along the supplied velocity vector.
-    EnemyProjectile(engine::Vec2 position,
-                    engine::Vec2 velocity,
+    EnemyProjectile(engine::Vector2D position,
+                    engine::Vector2D velocity,
                     std::shared_ptr<engine::Texture> texture,
                     std::shared_ptr<engine::Texture> explosionTexture);
 };

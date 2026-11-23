@@ -78,8 +78,8 @@ void OpenGLRenderer::bindTextureIfChanged(const Texture& texture) noexcept {
 // Computes the per-sprite Model matrix and UV tile rectangle, uploads them to the active
 // shader using cached uniform locations, and draws the unit quad.
 void OpenGLRenderer::drawSprite(const Texture& texture,
-                                Vec2 position,
-                                Vec2 size,
+                                Vector2D position,
+                                Vector2D size,
                                 float rotationRad,
                                 int frameCol,
                                 int frameRow,

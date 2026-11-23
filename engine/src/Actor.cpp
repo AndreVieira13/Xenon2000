@@ -10,7 +10,7 @@ namespace engine {
 
 // Initializes all three position snapshots to the same starting coordinates so
 // newly spawned actors never interpolate from (0, 0) on their first frame.
-Actor::Actor(Vec2 position, Vec2 velocity)
+Actor::Actor(Vector2D position, Vector2D velocity)
     : previousPosition_{position}
     , position_{position}
     , renderPosition_{position}
@@ -34,7 +34,7 @@ void Actor::initPhysicsBody(const BodyConfig& config) {
 }
 
 // Teleports the actor to pos, resetting interpolation snapshots and moving the Box2D body.
-void Actor::setPosition(Vec2 pos) noexcept {
+void Actor::setPosition(Vector2D pos) noexcept {
     previousPosition_ = pos;
     position_ = pos;
     renderPosition_ = pos;
@@ -44,7 +44,7 @@ void Actor::setPosition(Vec2 pos) noexcept {
 }
 
 // Updates both the cached velocity and the underlying Box2D body's linear velocity.
-void Actor::setVelocity(Vec2 vel) noexcept {
+void Actor::setVelocity(Vector2D vel) noexcept {
     velocity_ = vel;
     if (body_) {
         body_->setVelocityPx(vel);

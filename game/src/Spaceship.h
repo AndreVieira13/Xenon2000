@@ -15,7 +15,7 @@ namespace xenon {
 class Spaceship final : public engine::Actor {
 public:
     // Creates the player Spaceship at position with an optional initial invulnerability duration.
-    Spaceship(engine::Vec2 position,
+    Spaceship(engine::Vector2D position,
               std::shared_ptr<engine::Texture> spaceshipTexture,
               std::shared_ptr<engine::Texture> missileTexture,
               std::shared_ptr<engine::Texture> explosionTexture,

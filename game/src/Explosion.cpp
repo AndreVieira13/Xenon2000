@@ -9,7 +9,7 @@
 namespace xenon {
 
 // Configures a non-looping 10-frame animation matching explode64.bmp's 5x2 grid (64x64 px per tile).
-Explosion::Explosion(engine::Vec2 position, std::shared_ptr<engine::Texture> texture)
+Explosion::Explosion(engine::Vector2D position, std::shared_ptr<engine::Texture> texture)
     : Actor{position}
     , texture_{std::move(texture)} {
     animation_.cols = 5;
@@ -35,7 +35,7 @@ void Explosion::render(engine::Renderer& renderer) const {
     }
     renderer.drawSprite(*texture_,
                         getRenderPosition(),
-                        engine::Vec2{64.0f, 64.0f},
+                        engine::Vector2D{64.0f, 64.0f},
                         0.0f,
                         animation_.currentCol(),
                         animation_.currentRow(),

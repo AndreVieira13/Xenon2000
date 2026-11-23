@@ -8,7 +8,7 @@
 #define ENGINE_LEVEL_H
 
 #include "engine/Actor.h"
-#include "engine/Vec2.h"
+#include "engine/Vector2D.h"
 #include <memory>
 #include <utility>
 #include <vector>
@@ -24,7 +24,7 @@ class Level {
 public:
     // Creates a level with the given pixel dimensions and gravity vector.
     // Throws std::invalid_argument if width or height is non-positive.
-    Level(float width, float height, Vec2 gravity = {0.0f, 0.0f});
+    Level(float width, float height, Vector2D gravity = {0.0f, 0.0f});
 
     // Destroys all actors first, then destroys PhysicsWorld automatically.
     virtual ~Level();

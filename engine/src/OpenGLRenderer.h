@@ -43,8 +43,8 @@ public:
 
     // Builds the sprite's model matrix and UV sub-rectangle, binds its texture if needed, and draws.
     void drawSprite(const Texture& texture,
-                    Vec2 position,
-                    Vec2 size,
+                    Vector2D position,
+                    Vector2D size,
                     float rotationRad = 0.0f,
                     int frameCol = 0,
                     int frameRow = 0,

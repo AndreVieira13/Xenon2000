@@ -15,7 +15,7 @@ namespace xenon {
 class Explosion final : public engine::Actor {
 public:
     // Spawns a 10-frame non-looping explosion at position using explode64.bmp.
-    Explosion(engine::Vec2 position, std::shared_ptr<engine::Texture> texture);
+    Explosion(engine::Vector2D position, std::shared_ptr<engine::Texture> texture);
 
     // Advances the explosion animation and deactivates this actor once the last frame finishes.
     void update(float deltaTime, const engine::InputManager& input) override;

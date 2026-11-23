@@ -6,7 +6,7 @@
 #ifndef ENGINE_INPUT_MANAGER_H
 #define ENGINE_INPUT_MANAGER_H
 
-#include "engine/Vec2.h"
+#include "engine/Vector2D.h"
 #include <array>
 #include <cstddef>
 #include <memory>
@@ -53,7 +53,7 @@ public:
     bool isActionJustPressed(Action action) const noexcept;
 
     // Returns the combined 2D movement vector in [-1, 1] x [-1, 1] from keyboard and gamepad.
-    Vec2 getMoveAxis() const noexcept;
+    Vector2D getMoveAxis() const noexcept;
 
 private:
     struct Impl;
@@ -63,7 +63,7 @@ private:
     std::unique_ptr<Impl> impl_;
     std::array<bool, kActionCount> current_{};
     std::array<bool, kActionCount> previous_{};
-    Vec2 moveAxis_{0.0f, 0.0f};
+    Vector2D moveAxis_{0.0f, 0.0f};
 };
 
 } // namespace engine

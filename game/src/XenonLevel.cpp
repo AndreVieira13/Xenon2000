@@ -16,7 +16,7 @@ namespace xenon {
 
 // Constructs the base Level with zero gravity for top-down space flight.
 XenonLevel::XenonLevel(float width, float height)
-    : Level{width, height, engine::Vec2{0.0f, 0.0f}} {}
+    : Level{width, height, engine::Vector2D{0.0f, 0.0f}} {}
 
 // Preloads all Xenon 2000 sprite sheets and parallax backgrounds into ResourceManager
 // and spawns the player ship along with an opening wave of enemies.
@@ -104,7 +104,7 @@ void XenonLevel::spawnSpaceship(float invulnerableSeconds) {
 
     spawnActorWithPhysics<Spaceship>(
         cfg,
-        engine::Vec2{getWidth() * 0.5f, 80.0f},
+        engine::Vector2D{getWidth() * 0.5f, 80.0f},
         spaceshipTexture_,
         missileTexture_,
         explosionTexture_,
@@ -124,7 +124,7 @@ void XenonLevel::spawnLoner(float x, float y, float speed) {
 
     spawnActorWithPhysics<Loner>(
         cfg,
-        engine::Vec2{x, y},
+        engine::Vector2D{x, y},
         speed,
         lonerTexture_,
         enemyProjectileTexture_,
@@ -144,7 +144,7 @@ void XenonLevel::spawnRusher(float x, float y, float speed) {
 
     spawnActorWithPhysics<Rusher>(
         cfg,
-        engine::Vec2{x, y},
+        engine::Vector2D{x, y},
         speed,
         rusherTexture_,
         explosionTexture_);

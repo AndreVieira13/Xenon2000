@@ -15,9 +15,9 @@ namespace xenon {
 class Projectile : public engine::Actor {
 public:
     // Initializes projectile transform, rendered size, spin speed, sprite texture, and impact explosion texture.
-    Projectile(engine::Vec2 position,
-               engine::Vec2 velocity,
-               engine::Vec2 size,
+    Projectile(engine::Vector2D position,
+               engine::Vector2D velocity,
+               engine::Vector2D size,
                float rotationSpeedRad,
                std::shared_ptr<engine::Texture> texture,
                std::shared_ptr<engine::Texture> explosionTexture);
@@ -37,7 +37,7 @@ protected:
 private:
     std::shared_ptr<engine::Texture> texture_;
     std::shared_ptr<engine::Texture> explosionTexture_;
-    engine::Vec2 size_{16.0f, 16.0f};
+    engine::Vector2D size_{16.0f, 16.0f};
     float rotationSpeed_{0.0f};
     float visualRotation_{0.0f};
 };

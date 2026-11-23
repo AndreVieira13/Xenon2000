@@ -13,14 +13,14 @@
 namespace xenon {
 
 // Initializes Enemy with horizontal velocity, 2 HP, and LonerA.bmp's 4x4 grid (64x64 px per tile).
-Loner::Loner(engine::Vec2 position,
+Loner::Loner(engine::Vector2D position,
              float horizontalSpeed,
              std::shared_ptr<engine::Texture> texture,
              std::shared_ptr<engine::Texture> projectileTexture,
              std::shared_ptr<engine::Texture> explosionTexture)
     : Enemy{position,
-            engine::Vec2{horizontalSpeed, 0.0f},
-            engine::Vec2{64.0f, 64.0f},
+            engine::Vector2D{horizontalSpeed, 0.0f},
+            engine::Vector2D{64.0f, 64.0f},
             2,
             std::move(texture),
             std::move(explosionTexture)}
@@ -47,8 +47,8 @@ void Loner::update(float deltaTime, const engine::InputManager& input) {
     if (fireTimer_ >= kFireInterval) {
         fireTimer_ -= kFireInterval;
         if (auto* lvl = getLevel()) {
-            const engine::Vec2 pos = getPosition();
-            engine::Vec2 dir{0.0f, -1.0f};
+            const engine::Vector2D pos = getPosition();
+            engine::Vector2D dir{0.0f, -1.0f};
 
             // Dynamically query the active Spaceship right when firing instead of storing a raw
             // Spaceship* across frames (prevents dangling pointers while the player is respawning).

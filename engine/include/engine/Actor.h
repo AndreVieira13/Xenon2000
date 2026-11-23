@@ -7,7 +7,7 @@
 #ifndef ENGINE_ACTOR_H
 #define ENGINE_ACTOR_H
 
-#include "engine/Vec2.h"
+#include "engine/Vector2D.h"
 #include <cstdint>
 #include <memory>
 
@@ -27,7 +27,7 @@ enum class BodyType {
 
 struct BodyConfig {
     BodyType type{BodyType::Kinematic};
-    Vec2 halfExtents{16.0f, 16.0f};
+    Vector2D halfExtents{16.0f, 16.0f};
     float density{1.0f};
     bool isSensor{false};
     bool isBullet{false};
@@ -40,7 +40,7 @@ struct BodyConfig {
 class Actor {
 public:
     // Initializes an active actor at the given starting pixel position and velocity.
-    explicit Actor(Vec2 position = {0.0f, 0.0f}, Vec2 velocity = {0.0f, 0.0f});
+    explicit Actor(Vector2D position = {0.0f, 0.0f}, Vector2D velocity = {0.0f, 0.0f});
 
     // Destroys the actor and automatically frees its Box2DBody via std::unique_ptr.
     virtual ~Actor();
@@ -61,19 +61,19 @@ public:
     virtual void onOverlapBegin(Actor& /*other*/) {}
 
     // Returns the latest authoritative physics/logic position in pixels.
-    Vec2 getPosition() const noexcept { return position_; }
+    Vector2D getPosition() const noexcept { return position_; }
 
     // Returns the smoothly interpolated pixel position for stutter-free rendering.
-    Vec2 getRenderPosition() const noexcept { return renderPosition_; }
+    Vector2D getRenderPosition() const noexcept { return renderPosition_; }
 
     // Teleports the actor (and its physics body, if present) to pos without interpolation smear.
-    void setPosition(Vec2 pos) noexcept;
+    void setPosition(Vector2D pos) noexcept;
 
     // Returns the current linear velocity in pixels/second.
-    Vec2 getVelocity() const noexcept { return velocity_; }
+    Vector2D getVelocity() const noexcept { return velocity_; }
 
     // Updates linear velocity on both the actor cache and its Box2D body.
-    void setVelocity(Vec2 vel) noexcept;
+    void setVelocity(Vector2D vel) noexcept;
 
     // Returns the current rotation angle in radians.
     float getRotation() const noexcept { return rotation_; }
@@ -109,10 +109,10 @@ private:
     // Computes renderPosition_ by interpolating between previousPosition_ and position_.
     void updateRenderPosition(float alpha) noexcept;
 
-    Vec2 previousPosition_{0.0f, 0.0f};
-    Vec2 position_{0.0f, 0.0f};
-    Vec2 renderPosition_{0.0f, 0.0f};
-    Vec2 velocity_{0.0f, 0.0f};
+    Vector2D previousPosition_{0.0f, 0.0f};
+    Vector2D position_{0.0f, 0.0f};
+    Vector2D renderPosition_{0.0f, 0.0f};
+    Vector2D velocity_{0.0f, 0.0f};
     float rotation_{0.0f};
     bool active_{true};
 

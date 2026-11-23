@@ -12,7 +12,7 @@ namespace xenon {
 class Rusher final : public Enemy {
 public:
     // Creates a Rusher descending at verticalSpeed with 1 HP and 4x6 rusher.bmp animation.
-    Rusher(engine::Vec2 position,
+    Rusher(engine::Vector2D position,
            float verticalSpeed,
            std::shared_ptr<engine::Texture> texture,
            std::shared_ptr<engine::Texture> explosionTexture);

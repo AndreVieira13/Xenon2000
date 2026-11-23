@@ -8,13 +8,13 @@
 namespace xenon {
 
 // Initializes Enemy with downward velocity, 1 HP, and rusher.bmp's 4x6 grid (64x32 px per tile).
-Rusher::Rusher(engine::Vec2 position,
+Rusher::Rusher(engine::Vector2D position,
                float verticalSpeed,
                std::shared_ptr<engine::Texture> texture,
                std::shared_ptr<engine::Texture> explosionTexture)
     : Enemy{position,
-            engine::Vec2{0.0f, -verticalSpeed},
-            engine::Vec2{64.0f, 32.0f},
+            engine::Vector2D{0.0f, -verticalSpeed},
+            engine::Vector2D{64.0f, 32.0f},
             1,
             std::move(texture),
             std::move(explosionTexture)} {

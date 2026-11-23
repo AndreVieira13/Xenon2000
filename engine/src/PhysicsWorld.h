@@ -8,7 +8,7 @@
 #define ENGINE_PHYSICS_WORLD_H
 
 #include "engine/Actor.h"
-#include "engine/Vec2.h"
+#include "engine/Vector2D.h"
 #include <box2d/box2d.h>
 #include <memory>
 
@@ -76,16 +76,16 @@ public:
     Box2DBody& operator=(Box2DBody&& other) noexcept;
 
     // Reads the body's world position from Box2D and converts meters to pixels.
-    Vec2 getPositionPx() const noexcept;
+    Vector2D getPositionPx() const noexcept;
 
     // Teleports the body to positionPx (converted to meters) while preserving rotation.
-    void setPositionPx(Vec2 positionPx) noexcept;
+    void setPositionPx(Vector2D positionPx) noexcept;
 
     // Reads the body's linear velocity from Box2D and converts m/s to px/s.
-    Vec2 getVelocityPx() const noexcept;
+    Vector2D getVelocityPx() const noexcept;
 
     // Sets the body's linear velocity in px/s (converted to m/s).
-    void setVelocityPx(Vec2 velocityPx) noexcept;
+    void setVelocityPx(Vector2D velocityPx) noexcept;
 
     // Reads the body's Z-axis rotation angle in radians from Box2D's b2Rot complex number.
     float getRotationRad() const noexcept;
@@ -107,7 +107,7 @@ private:
 class PhysicsWorld {
 public:
     // Initializes a Box2D world converting gravity from px/s^2 to m/s^2.
-    explicit PhysicsWorld(Vec2 gravity = {0.0f, 0.0f});
+    explicit PhysicsWorld(Vector2D gravity = {0.0f, 0.0f});
     ~PhysicsWorld() = default;
 
     PhysicsWorld(const PhysicsWorld&) = delete;
@@ -127,8 +127,8 @@ public:
     // Builds an RAII Box2DBody with a configured box polygon shape and collision filter bits.
     std::unique_ptr<Box2DBody> createBody(Actor* owner,
                                           const BodyConfig& config,
-                                          Vec2 positionPx,
-                                          Vec2 velocityPx);
+                                          Vector2D positionPx,
+                                          Vector2D velocityPx);
 
 private:
     // Queries Box2D sensor begin-touch events after a step and invokes onOverlapBegin on both Actors.

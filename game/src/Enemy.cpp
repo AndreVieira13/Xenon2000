@@ -13,9 +13,9 @@
 namespace xenon {
 
 // Validates positive initial health and stores enemy size, health, and textures.
-Enemy::Enemy(engine::Vec2 position,
-             engine::Vec2 velocity,
-             engine::Vec2 size,
+Enemy::Enemy(engine::Vector2D position,
+             engine::Vector2D velocity,
+             engine::Vector2D size,
              int initialHealth,
              std::shared_ptr<engine::Texture> texture,
              std::shared_ptr<engine::Texture> explosionTexture)
@@ -69,7 +69,7 @@ bool Enemy::isOutOfBounds(float margin) const noexcept {
     const auto* level = getLevel();
     const float w = level ? level->getWidth() : 800.0f;
     const float h = level ? level->getHeight() : 600.0f;
-    const engine::Vec2 pos = getPosition();
+    const engine::Vector2D pos = getPosition();
     return pos.x < -margin || pos.x > w + margin || pos.y < -margin || pos.y > h + margin;
 }
 

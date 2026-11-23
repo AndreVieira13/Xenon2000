@@ -16,9 +16,9 @@ class Enemy : public engine::Actor {
 public:
     // Initializes an enemy with starting transform, pixel size, positive health, and textures.
     // Throws std::invalid_argument if initialHealth <= 0.
-    Enemy(engine::Vec2 position,
-          engine::Vec2 velocity,
-          engine::Vec2 size,
+    Enemy(engine::Vector2D position,
+          engine::Vector2D velocity,
+          engine::Vector2D size,
           int initialHealth,
           std::shared_ptr<engine::Texture> texture,
           std::shared_ptr<engine::Texture> explosionTexture);
@@ -40,7 +40,7 @@ protected:
     const std::shared_ptr<engine::Texture>& getExplosionTexture() const noexcept { return explosionTexture_; }
 
     engine::SpriteAnimation animation_;
-    engine::Vec2 size_{64.0f, 64.0f};
+    engine::Vector2D size_{64.0f, 64.0f};
     int health_{1};
 
 private:

@@ -12,7 +12,7 @@ namespace xenon {
 class Missile final : public Projectile {
 public:
     // Configures an upward-moving light missile using the first row of missile.bmp.
-    Missile(engine::Vec2 position,
+    Missile(engine::Vector2D position,
             std::shared_ptr<engine::Texture> texture,
             std::shared_ptr<engine::Texture> explosionTexture);
 };

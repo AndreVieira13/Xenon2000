@@ -83,16 +83,16 @@ Box2DBody& Box2DBody::operator=(Box2DBody&& other) noexcept {
 }
 
 // Reads the body's world position in meters and converts it back to screen pixels.
-Vec2 Box2DBody::getPositionPx() const noexcept {
+Vector2D Box2DBody::getPositionPx() const noexcept {
     if (b2Body_IsValid(bodyId_)) {
         const b2Vec2 pos = b2Body_GetPosition(bodyId_);
-        return Vec2{units::toPixels(pos.x), units::toPixels(pos.y)};
+        return Vector2D{units::toPixels(pos.x), units::toPixels(pos.y)};
     }
-    return Vec2{0.0f, 0.0f};
+    return Vector2D{0.0f, 0.0f};
 }
 
 // Converts positionPx to meters and moves the body directly while keeping its current rotation.
-void Box2DBody::setPositionPx(Vec2 positionPx) noexcept {
+void Box2DBody::setPositionPx(Vector2D positionPx) noexcept {
     if (b2Body_IsValid(bodyId_)) {
         const b2Rot rot = b2Body_GetRotation(bodyId_);
         b2Body_SetTransform(bodyId_,
@@ -102,16 +102,16 @@ void Box2DBody::setPositionPx(Vec2 positionPx) noexcept {
 }
 
 // Reads the body's linear velocity in m/s and converts it to px/s.
-Vec2 Box2DBody::getVelocityPx() const noexcept {
+Vector2D Box2DBody::getVelocityPx() const noexcept {
     if (b2Body_IsValid(bodyId_)) {
         const b2Vec2 vel = b2Body_GetLinearVelocity(bodyId_);
-        return Vec2{units::toPixels(vel.x), units::toPixels(vel.y)};
+        return Vector2D{units::toPixels(vel.x), units::toPixels(vel.y)};
     }
-    return Vec2{0.0f, 0.0f};
+    return Vector2D{0.0f, 0.0f};
 }
 
 // Converts velocityPx from px/s to m/s and applies it directly to the Box2D body.
-void Box2DBody::setVelocityPx(Vec2 velocityPx) noexcept {
+void Box2DBody::setVelocityPx(Vector2D velocityPx) noexcept {
     if (b2Body_IsValid(bodyId_)) {
         b2Body_SetLinearVelocity(bodyId_,
                                  b2Vec2{units::toMeters(velocityPx.x), units::toMeters(velocityPx.y)});
@@ -147,7 +147,7 @@ void Box2DBody::release() noexcept {
 // ---------------------------------------------------------------------------
 
 // Creates the underlying Box2DWorld with gravity converted from px/s^2 to m/s^2.
-PhysicsWorld::PhysicsWorld(Vec2 gravity)
+PhysicsWorld::PhysicsWorld(Vector2D gravity)
     : world_{b2Vec2{units::toMeters(gravity.x), units::toMeters(gravity.y)}} {}
 
 // Checks whether adding clamped deltaTime to accumulator_ will execute at least one 60 Hz step.
@@ -200,8 +200,8 @@ void PhysicsWorld::processSensorEvents() {
 // converting all pixel dimensions to meters and configuring sensor events and collision masks.
 std::unique_ptr<Box2DBody> PhysicsWorld::createBody(Actor* owner,
                                                     const BodyConfig& config,
-                                                    Vec2 positionPx,
-                                                    Vec2 velocityPx) {
+                                                    Vector2D positionPx,
+                                                    Vector2D velocityPx) {
     // Step 1: Populate a temporary stack b2BodyDef (Box2D copies values internally).
     b2BodyDef bodyDef = b2DefaultBodyDef();
     switch (config.type) {

@@ -17,7 +17,7 @@
 namespace xenon {
 
 // Initializes the player ship with shared sprite/missile/explosion textures and optional shield time.
-Spaceship::Spaceship(engine::Vec2 position,
+Spaceship::Spaceship(engine::Vector2D position,
                      std::shared_ptr<engine::Texture> spaceshipTexture,
                      std::shared_ptr<engine::Texture> missileTexture,
                      std::shared_ptr<engine::Texture> explosionTexture,
@@ -37,18 +37,18 @@ void Spaceship::update(float deltaTime, const engine::InputManager& input) {
 
     // Normalize diagonal input so moving diagonally isn't sqrt(2) times faster than axis-aligned motion;
     // lengthSquared() avoids invoking std::sqrt() when moving purely horizontally, vertically, or idle.
-    engine::Vec2 axis = input.getMoveAxis();
+    engine::Vector2D axis = input.getMoveAxis();
     if (engine::lengthSquared(axis) > 1.0f) {
         axis = engine::normalized(axis);
     }
 
-    engine::Vec2 vel = axis * speed_;
+    engine::Vector2D vel = axis * speed_;
 
     // Prevent the ship from leaving the visible arena by cancelling outward velocity at each border.
     const auto* level = getLevel();
     const float w = level ? level->getWidth() : 800.0f;
     const float h = level ? level->getHeight() : 600.0f;
-    const engine::Vec2 pos = getPosition();
+    const engine::Vector2D pos = getPosition();
 
     if ((pos.x <= kScreenMargin && vel.x < 0.0f) || (pos.x >= w - kScreenMargin && vel.x > 0.0f)) {
         vel.x = 0.0f;
@@ -99,7 +99,7 @@ void Spaceship::update(float deltaTime, const engine::InputManager& input) {
             cfg.categoryBits = layer::PlayerShot;
             cfg.maskBits = layer::Enemy;
 
-            const engine::Vec2 spawnPos{pos.x, pos.y + 36.0f};
+            const engine::Vector2D spawnPos{pos.x, pos.y + 36.0f};
             lvl->spawnActorWithPhysics<Missile>(cfg, spawnPos, missileTexture_, explosionTexture_);
         }
     }
@@ -118,7 +118,7 @@ void Spaceship::render(engine::Renderer& renderer) const {
 
     renderer.drawSprite(*texture_,
                         getRenderPosition(),
-                        engine::Vec2{64.0f, 64.0f},
+                        engine::Vector2D{64.0f, 64.0f},
                         0.0f,
                         currentFrame_,
                         0,

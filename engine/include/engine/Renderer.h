@@ -7,7 +7,7 @@
 #define ENGINE_RENDERER_H
 
 #include "engine/Texture.h"
-#include "engine/Vec2.h"
+#include "engine/Vector2D.h"
 
 namespace engine {
 
@@ -42,8 +42,8 @@ public:
     // Renders a textured quad (or one tile from a cols x rows sprite sheet) at pixel position,
     // scaled to size, rotated by rotationRad around Z, and tinted by opacity alpha.
     virtual void drawSprite(const Texture& texture,
-                            Vec2 position,
-                            Vec2 size,
+                            Vector2D position,
+                            Vector2D size,
                             float rotationRad = 0.0f,
                             int frameCol = 0,
                             int frameRow = 0,

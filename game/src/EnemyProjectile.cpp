@@ -9,13 +9,13 @@ namespace xenon {
 
 // Initializes Projectile along the aimed velocity vector with continuous 6.0 rad/s rotation
 // and loops across all 8 frames of EnWeap6.bmp's 8x1 strip (16x16 px per tile).
-EnemyProjectile::EnemyProjectile(engine::Vec2 position,
-                                 engine::Vec2 velocity,
+EnemyProjectile::EnemyProjectile(engine::Vector2D position,
+                                 engine::Vector2D velocity,
                                  std::shared_ptr<engine::Texture> texture,
                                  std::shared_ptr<engine::Texture> explosionTexture)
     : Projectile{position,
                  velocity,
-                 engine::Vec2{24.0f, 24.0f},
+                 engine::Vector2D{24.0f, 24.0f},
                  6.0f,
                  std::move(texture),
                  std::move(explosionTexture)} {

@@ -15,9 +15,9 @@ constexpr float kBoundsMargin = 32.0f;
 } // namespace
 
 // Initializes projectile transform, size, spin rate, and sprite/explosion textures.
-Projectile::Projectile(engine::Vec2 position,
-                       engine::Vec2 velocity,
-                       engine::Vec2 size,
+Projectile::Projectile(engine::Vector2D position,
+                       engine::Vector2D velocity,
+                       engine::Vector2D size,
                        float rotationSpeedRad,
                        std::shared_ptr<engine::Texture> texture,
                        std::shared_ptr<engine::Texture> explosionTexture)
@@ -37,7 +37,7 @@ void Projectile::update(float deltaTime, const engine::InputManager& /*input*/) 
     const auto* level = getLevel();
     const float w = level ? level->getWidth() : 800.0f;
     const float h = level ? level->getHeight() : 600.0f;
-    const engine::Vec2 pos = getPosition();
+    const engine::Vector2D pos = getPosition();
 
     if (pos.x < -kBoundsMargin || pos.x > w + kBoundsMargin ||
         pos.y < -kBoundsMargin || pos.y > h + kBoundsMargin) {
