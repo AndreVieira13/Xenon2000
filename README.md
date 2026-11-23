@@ -28,7 +28,17 @@ The repository is split into two independent CMake targets so the engine can be 
 ### Prerequisites
 - CMake 3.24+
 - C++17 compiler (Visual Studio 2022 on Windows, Xcode on macOS, or GCC/Clang + Ninja)
-- [vcpkg](https://github.com/microsoft/vcpkg) with the `VCPKG_ROOT` environment variable set to your vcpkg directory
+- [vcpkg](https://github.com/microsoft/vcpkg) with the `VCPKG_ROOT` environment variable set to your vcpkg directory:
+  ```powershell
+  # Windows (PowerShell - current session)
+  $env:VCPKG_ROOT = "C:\vcpkg"
+  # Windows (PowerShell - persistent for your user)
+  [Environment]::SetEnvironmentVariable("VCPKG_ROOT", "C:\vcpkg", "User")
+  ```
+  ```bash
+  # macOS / Linux (add to ~/.zshrc or ~/.bashrc to persist)
+  export VCPKG_ROOT="$HOME/vcpkg"
+  ```
 
 ### Configure & Build (using CMake Presets)
 vcpkg automatically reads `vcpkg.json` and installs `sdl3`, `box2d`, and `glm` during configure:
@@ -50,12 +60,16 @@ cmake --build --preset xcode
 *(Or open the folder in Visual Studio 2022, select `Xenon2000.exe` as the startup item, and press **F5**. `POST_BUILD` automatically copies `assets/` and `shaders/` next to the executable.)*
 
 ### Run
+Run the executable from its output directory so relative `assets/` and `shaders/` paths resolve:
+
 ```bash
 # From Visual Studio preset:
-./build-vs/game/Debug/Xenon2000.exe
+cd build-vs/game/Debug
+./Xenon2000.exe
 
 # From Ninja preset:
-./build/game/Xenon2000.exe
+cd build/game
+./Xenon2000.exe
 ```
 
 ## Controls
