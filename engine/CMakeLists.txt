@@ -32,6 +32,7 @@ set(ENGINE_SOURCES
     "${CMAKE_CURRENT_SOURCE_DIR}/src/ResourceManager.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/Shader.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/Texture.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/Vector2D.cpp"
 )
 
 add_library(Engine STATIC
