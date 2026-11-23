@@ -1,0 +1,10 @@
+{
+  "name": "xenon2000-engine",
+  "version-string": "1.0.0",
+  "builtin-baseline": "d4c0a46cb8f63e5c9fa007d13baf1cb3e43bf7e3",
+  "dependencies": [
+    "sdl3",
+    "box2d",
+    "glm"
+  ]
+}
